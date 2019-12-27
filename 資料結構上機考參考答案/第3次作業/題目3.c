@@ -79,6 +79,11 @@ int main(){
     inorder(root,1);
     printf("sum:%d\n",sum);
 
+//Phase4: Write to file
+    f=fopen("output3.txt","w");
+    fprintf(f, "%d", sum);
+    fclose(f);
+
     system("pause");
     return 0;
 }
