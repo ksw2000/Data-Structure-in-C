@@ -45,7 +45,7 @@ int main(){
 	}
 	printf("\n");
 
-//Phase4: Greedy. Get more object as possible
+//Phase4: Greedy. Get objects as many as possible
 	int max_price=0;
 	for(i=0; i<10 ; i++){
 		if(bounding-object_weight[i]>=0){
@@ -66,7 +66,7 @@ int main(){
  	f=fopen("output1.txt","w");
  	fprintf(f,"%d",max_price);
  	fclose(f);
-    
+
  	system("pause");
     return 0;
 }
