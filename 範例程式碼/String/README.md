@@ -1,12 +1,12 @@
 # 常用的 string 函數
-在資料結構的課堂上可能會需要用到一些字串的操作。在操作字串時雖然可以自己土法鍊鋼寫一函數，但用函數庫預設的方便許多
+在資料結構的課堂上可能會需要用到一些字串的操作。在操作字串時雖然可以自己土法鍊鋼寫一函數，但用函數庫預設的方便許多，以下提到的函數除了第一個其他都要 include string.h
 
 ## 1. 超實用 sprintf()
-sprintf()簡單易學，但速度就是慢了點，不過因為太好用了，所以考試時如果忘記了可以趕緊來用。
+sprintf()簡單易學，雖然速度是慢了點。另外 sprintf() 是 stdio.h 裡的函數所以不用再另外 include string.h
 
 <pre><code>
 int sprintf(char&ast; str, const char&ast; format, ...)
-0</pre></code>
+</pre></code>
 
 這個函數其實很好懂，主要就是你可把你想 printf() 出的結果傳到str裡
 
@@ -45,7 +45,7 @@ printf("%s",str);
 //10 A 9.487
 </pre></code>
 
-## 2. strcmp() 比較兩字串
+## 2. strcmp() string comparison 比較兩字串
 <pre><code>
 int strcmp(const char&ast; str1, const char&ast; str2)
 /&ast;
@@ -64,7 +64,7 @@ if(!strcmp(str,"student")){
 }
 </pre></code>
 
-## 3. strlen() 返回字串長度(字元數)
+## 3. strlen() string length 返回字串長度(字元數)
 
     printf("%d ",strlen("abc"));
     //3
@@ -80,9 +80,9 @@ if(!strcmp(str,"student")){
     //4
 
 ---
-以下函數可由 sprintf 實現
+**以下函數皆可由 sprintf 實現**
 
-## 4. strcat() string concatenation
+## 4. strcat() string concatenation 字串拼接
 將一個字串拼接到另一個字串的後面
 <pre><code>
 char&ast; strcat(char&ast; dest, const char&ast; src)
@@ -90,5 +90,9 @@ char&ast; strcat(char&ast; dest, const char&ast; src)
 
 把 src 加在 dest 後面，並回傳拼完的字串，但其實dest就是拼接完的結果，所以一般不用特別再宣告新的變數去接回傳值
 
-## 5. strcpy() string copy (常用)
+## 5. strcpy() string copy 字串複製
 將一個字串複製到另一個字串
+<pre><code>
+char&ast; strcpy(char&ast; dest, const char&ast; src)
+</pre></code>
+strcpy()可以將src字串複製到dest裡面，並回傳複製完的新字串，但其實dest就是複製後的結果，所以一般不用特別再宣告新的變數去接回傳值
