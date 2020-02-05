@@ -89,7 +89,7 @@ Java
 
     }
 
-## 3. typedef 的實際用途
+## 3. typedef 配合指標的用途
 
 假設我宣告了一個結構體叫做 tree
 
@@ -101,14 +101,20 @@ Java
 
     typedef struct t tree;
 
-此時，如果我要用tree的指標變數我這樣寫：
+此時，如果我要宣告3個tree的指標變數，而我這樣寫：
 
     tree* a,b,c;
 
-這時會出現問題，編譯器會以為你是這個意思：
+看似很正確，但這時會出現問題，
+<pre><code>
+//編譯器會以為你是這個意思：
+struct tree&ast; a, b, c;
 
-    struct tree* a, b, c;
-    //只有 a 是指標變數，其他都不是
+//其實也是這個意思:
+struct tree &ast;a, b, c;
+
+//此時只有 a 是指標變數，其他都不是
+</pre></code>
 
 其實這時你可以寫成這樣：
 
