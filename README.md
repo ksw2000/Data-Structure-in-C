@@ -16,8 +16,14 @@
         + strcat().c
         + strcpy().c
     + Struct
+        + 01-基礎格式.c
+        + 02-在結構體後直接宣告變數.c
+        + 03-結構體搭配typedef.c
+        + 04-結構體指標.c
     + Union
+        + union.c
     + Enum
+        + enum.c
     + Array
     + Sparse Matrix
     + Stack
