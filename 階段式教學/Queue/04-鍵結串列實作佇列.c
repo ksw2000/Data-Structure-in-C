@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
 
 struct e{
     char* name;
@@ -49,6 +48,7 @@ element dequeue(queue* this){
     return tmp;
 }
 
+//方便我們觀察 Queue 變化
 void printQueueLn(queue this){
     element current;
 
@@ -86,5 +86,15 @@ int main(){
     enqueue(&q, song4);
     printQueueLn(q);
 
+/*
+    這個範例用的比較偏物件導向的感覺
+    其是如果怕麻煩的話直接宣告一個
+    rear  來代替 queue->en
+    front 來代替 queue->de
+    也可以達到一樣的效果
+    另外在 enqueue 的部份可以改成
+    先 create queue 再 enqueue 會比較簡單一些些
+    但是我用的就是有一點點偏 oop 的風格 (？
+*/
     return 0;
 }
