@@ -1,40 +1,59 @@
 # Data Structure in C
 
-### Content
+### Catalog
 
 + 階段式教學 (依建議閱讀順序排序)
-  + [README.md](/階段式教學/README.md) (C語言概念澄清)
-  + Pointer
-    + 01-取址及取值符號.c
-    + 02-利用指標更改記憶體內容.c
-    + 03-指標指向一大塊記憶體.c
-    + 04-陣列變數之名稱即陣列的位置.c
-  + String
-    + README.md (介紹字串控制相關函數)
-    + sprintf().c
-    + strlen().c
-    + strcmp().c
-    + strcat().c
-    + strcpy().c
-  + Struct
-    + 01-基礎格式.c
-    + 02-在結構體後直接宣告變數.c
-    + 03-結構體搭配typedef.c
-    + 04-結構體指標.c
-    + 05-函數引用結構體.c
-    + 06-函數引用結構體陣列.c
-  + Union
-    + union.c
-  + Enum
-    + enum.c
-  + Array
-  + Sparse Matrix
-  + Stack
-  + Queue
-  + Linked List
-  + Tree
-  + Heap
-  + Graph
+    + [README.md](./階段式教學/README.md) `C語言概念澄清`
+    + [Pointer](./階段式教學/Pointer)
+        + [01-取址及取值符號.c](./階段式教學/Pointer/01-取址及取值符號.c)
+        + [02-利用指標更改記憶體內容.c](./階段式教學/Pointer/02-利用指標更改記憶體內容.c)
+        + [03-指標指向一大塊記憶體.c](./階段式教學/Pointer/03-指標指向一大塊記憶體.c)
+        + [04-陣列變數之名稱即陣列的位置.c](./階段式教學/Pointer/04-陣列變數之名稱即陣列的位置.c)
+    + String
+        + README.md (介紹字串控制相關函數)
+        + sprintf().c
+        + strlen().c
+        + strcmp().c
+        + strcat().c
+        + strcpy().c
+    + Struct
+        + 01-基礎格式.c
+        + 02-在結構體後直接宣告變數.c
+        + 03-結構體搭配typedef.c
+        + 04-結構體指標.c
+        + 05-函數引用結構體.c
+        + 06-函數引用結構體陣列.c
+    + Union
+        + union.c
+    + Enum
+        + enum.c
+    + Array
+        + 01-動態宣告二維陣列.c
+    + Sparse Matrix
+    + Stack
+        + 01-陣列實作堆疊(基礎).c
+        + 02-陣列實作堆疊(結構體).c
+        + 03-鏈結串列實作堆疊.c
+        + 04-堆疊解迷宮問題.c
+        + 05-用堆疊來計算後序式.c
+    + Queue
+        + 01-陣列實作佇列(基礎).c
+        + 02-陣列實作佇列(結構體).c
+        + 03-陣列實作環狀佇列.c
+        + 04-鍵結串列實作佇列.c
+        + 05-動態陣列實作佇列.c
+    + Linked List
+        + 01-基礎格式.C
+        + 02-自訂lib說明.C
+        + 03-insert.c
+        + 04-delete.c
+        + 05-invert.c
+        + 06-concatenate.c
+        + 07-insertFront(circular).c
+        + 08-length(circular).c
+    + Tree
+    + Heap
+    + Graph
 + 資料結構上機考參考答案
 
 ---
