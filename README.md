@@ -9,48 +9,49 @@
         + [02-利用指標更改記憶體內容.c](./階段式教學/Pointer/02-利用指標更改記憶體內容.c)
         + [03-指標指向一大塊記憶體.c](./階段式教學/Pointer/03-指標指向一大塊記憶體.c)
         + [04-陣列變數之名稱即陣列的位置.c](./階段式教學/Pointer/04-陣列變數之名稱即陣列的位置.c)
-    + String
-        + README.md (介紹字串控制相關函數)
-        + sprintf().c
-        + strlen().c
-        + strcmp().c
-        + strcat().c
-        + strcpy().c
-    + Struct
-        + 01-基礎格式.c
-        + 02-在結構體後直接宣告變數.c
-        + 03-結構體搭配typedef.c
-        + 04-結構體指標.c
-        + 05-函數引用結構體.c
-        + 06-函數引用結構體陣列.c
-    + Union
-        + union.c
-    + Enum
-        + enum.c
-    + Array
-        + 01-動態宣告二維陣列.c
+    + [String](./階段式教學/String)
+        + [README.md](./階段式教學/String/README.md) `介紹字串控制相關函數`
+        + [sprintf.c](./階段式教學/String/sprintf.c)
+        + [strlen.c](./階段式教學/String/strlen.c)
+        + [strcmp.c](./階段式教學/String/strcmp.c)
+        + [strcat.c](./階段式教學/String/strcat.c)
+        + [strcpy.c](./階段式教學/String/strcpy.c)
+    + [Struct](./階段式教學/Struct)
+        + [01-基礎格式.c](./階段式教學/Struct/01-基礎格式.c)
+        + [02-在結構體後直接宣告變數.c](./階段式教學/Struct/02-在結構體後直接宣告變數.c)
+        + [03-結構體搭配typedef.c](./階段式教學/Struct/03-結構體搭配typedef.c)
+        + [04-結構體指標.c](./階段式教學/Struct/04-結構體指標.c)
+        + [05-函數引用結構體.c](./階段式教學/Struct/05-函數引用結構體.c)
+        + [06-函數引用結構體陣列.c](./階段式教學/Struct/06-函數引用結構體陣列.c)
+    + [Union](./階段式教學/Union)
+        + [union.c](./階段式教學/Union/union.c)
+    + [Enum](./階段式教學/Enum)
+        + [enum.c](./階段式教學/Enum/enum.c)
+    + [Array](./階段式教學/Array)
+        + [01-動態宣告二維陣列.c](./階段式教學/01-動態宣告二維陣列.c)
     + Sparse Matrix
-    + Stack
-        + 01-陣列實作堆疊(基礎).c
-        + 02-陣列實作堆疊(結構體).c
-        + 03-鏈結串列實作堆疊.c
-        + 04-堆疊解迷宮問題.c
-        + 05-用堆疊來計算後序式.c
-    + Queue
-        + 01-陣列實作佇列(基礎).c
-        + 02-陣列實作佇列(結構體).c
-        + 03-陣列實作環狀佇列.c
-        + 04-鍵結串列實作佇列.c
-        + 05-動態陣列實作佇列.c
-    + Linked List
-        + 01-基礎格式.C
-        + 02-自訂lib說明.C
-        + 03-insert.c
-        + 04-delete.c
-        + 05-invert.c
-        + 06-concatenate.c
-        + 07-insertFront(circular).c
-        + 08-length(circular).c
+    + [Stack](./階段式教學/Stack)
+        + [01-陣列實作堆疊-基礎.c](./階段式教學/Stack/01-陣列實作堆疊-基礎.c)
+        + [02-陣列實作堆疊-結構體.c](./階段式教學/Stack/02-陣列實作堆疊-結構體.c)
+        + [03-鏈結串列實作堆疊.c](./階段式教學/Stack/03-鏈結串列實作堆疊.c)
+        + [04-堆疊解迷宮問題.c](./階段式教學/Stack/04-堆疊解迷宮問題.c)
+        + [05-用堆疊來計算後序式.c](./階段式教學/Stack/05-用堆疊來計算後序式.c)
+    + [Queue](./階段式教學/Queue)
+        + [01-陣列實作佇列-基礎.c](./階段式教學/Queue/01-陣列實作佇列-基礎.c)
+        + [02-陣列實作佇列-結構體.c](./階段式教學/Queue/02-陣列實作佇列-結構體.c)
+        + [03-陣列實作環狀佇列.c](./階段式教學/Queue/03-陣列實作環狀佇列.c)
+        + [04-鍵結串列實作佇列.c](./階段式教學/Queue/04-鍵結串列實作佇列.c)
+        + [05-動態陣列實作佇列.c](./階段式教學/Queue/05-動態陣列實作佇列.c)
+    + [Linked-List](./階段式教學/Linked-list)
+        + [01-基礎格式.c](./階段式教學/Linked-list/01-基礎格式.c)
+        + [02-自訂lib說明.c](./階段式教學/Linked-list/02-自訂lib說明.c)
+        + [03-insert.c](./階段式教學/Linked-list/03-insert.c)
+        + [04-delete.c](./階段式教學/Linked-list/04-delete.c)
+        + [05-invert.c](./階段式教學/Linked-list/05-invert.c)
+        + [06-concatenate.c](./階段式教學/Linked-list/06-concatenate.c)
+        + [07-insertFront-circular.c](./階段式教學/Linked-list/07-insertFront-circular.c)
+        + [08-length-circular.c](./階段式教學/Linked-list/08-length-circular.c)
+        + [09-equivalence.c](./階段式教學/Linked-list/09-equivalence.c)
     + Tree
     + Heap
     + Graph
