@@ -52,10 +52,13 @@ Element dequeue(Queue this){
         fprintf(stderr, "Queue is empty");
         exit(EXIT_FAILURE);
     }
-    this->_rear = (this->_rear + 1) % this->_cap;
     Element tmp = this->list[this->_rear];
+    this->_rear = (this->_rear + 1) % this->_cap;
     this->_len--;
     return tmp;
+    /*Deqeue 回傳後的值必需馬上使用*/
+    /*不然會有 BUG*/
+    /*不太清礎為什麼，但實際使用時會發生問題*/
 }
 
 int isEmpty(Queue this){
@@ -105,6 +108,9 @@ int main(){
     Element song8 = createElement("如煙", 319);
 
     q->enqueue(q, song1);
+    q->print(q);
+    printf("dequeue\n");
+    q->dequeue(q);
     q->print(q);
     q->enqueue(q, song2);
     q->print(q);
