@@ -56,9 +56,6 @@ Element dequeue(Queue this){
     this->_rear = (this->_rear + 1) % this->_cap;
     this->_len--;
     return tmp;
-    /*Deqeue 回傳後的值必需馬上使用*/
-    /*不然會有 BUG*/
-    /*不太清礎為什麼，但實際使用時會發生問題*/
 }
 
 int isEmpty(Queue this){
@@ -81,7 +78,7 @@ Queue __Queue__(){
     this->_len = 0;
     this->_rear = 0;
     this->_front = 0;
-    this->list = malloc(sizeof(*(this->list)));
+    this->list = malloc(this->_cap * sizeof(*(this->list)));
     this->enqueue = enqueue;
     this->dequeue = dequeue;
     this->isEmpty = isEmpty;
