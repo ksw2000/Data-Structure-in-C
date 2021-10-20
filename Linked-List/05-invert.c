@@ -1,9 +1,9 @@
 // 反轉一個 Linked list
-#include<stdio.h>
-#include<stdlib.h>
-#include"lib/linkedlist.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "lib/linkedlist.h"
 
-LinkedList invert(LinkedList l){
+LinkedList invert(LinkedList l) {
     /*
         比較好懂的作法
 
@@ -29,11 +29,11 @@ LinkedList invert(LinkedList l){
     Node trail, middle;
     Node lead = l->first;
     middle = NULL;
-    while(lead){
+    while (lead) {
         trail = middle;
         middle = lead;
-        lead = lead -> next;
-        middle -> next = trail;
+        lead = lead->next;
+        middle->next = trail;
     }
 
     // 因為我用的是 OOP 所以又多的幾步 (記錄新串列開頭而已也沒什麼)
@@ -50,14 +50,15 @@ LinkedList invert(LinkedList l){
         lead:   走訪原本的 linked list
 
         while(lead){
-            trail = middle;         // [STEP2] trail 暫存 middle (保持在新串列的最前端)
-            middle = lead;          // [STEP3] middle 暫存 lead
-            lead = lead->next;      // [STEP4] lead 走訪舊串列
-            middle->next = trail    // [STEP1] 將走訪到的舊串列節點加回新串列 (從前方加入(stack push))
+            trail = middle;         // [STEP2] trail 暫存 middle
+       (保持在新串列的最前端) middle = lead;          // [STEP3] middle 暫存
+       lead lead = lead->next;      // [STEP4] lead 走訪舊串列 middle->next =
+       trail    // [STEP1] 將走訪到的舊串列節點加回新串列 (從前方加入(stack
+       push))
         }
 
         課本上的作法實在過於精簡，只有神人才看得懂吧
-        Fundmentals of Daata Structure in C p.171 Program 4.16
+        Fundamentals of Data Structure in C p.171 Program 4.16
 
         自己實作上建議可以將想法想成
         1. 走訪舊串列
@@ -66,7 +67,7 @@ LinkedList invert(LinkedList l){
     */
 }
 
-int main(){
+int main() {
     LinkedList l = __LinkedList__();
     l->append(l, "BAT");
     l->append(l, "CAT");
@@ -76,7 +77,7 @@ int main(){
 
     printf("l: \t");
     Node current;
-    for(current = l->first; current; current = current->next){
+    for (current = l->first; current; current = current->next) {
         printf("%s -> ", (char*)(current->data));
     }
     printf("NULL\n");
@@ -84,7 +85,7 @@ int main(){
     LinkedList m = invert(l);
 
     printf("m: \t");
-    for(current = m->first; current; current = current->next){
+    for (current = m->first; current; current = current->next) {
         printf("%s -> ", (char*)(current->data));
     }
     printf("NULL\n");

@@ -1,35 +1,35 @@
 // 取得「環狀鍵結串列」長度
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct node{
+struct node {
     int data;
     struct node* next;
 };
 typedef struct node* Node;
 
-void insertFront(Node* last, Node insertThis){
-    if(!(*last)){
+void insertFront(Node* last, Node insertThis) {
+    if (!(*last)) {
         *last = insertThis;
         insertThis->next = insertThis;
-    }else{
-        insertThis -> next = (*last)->next;
+    } else {
+        insertThis->next = (*last)->next;
         (*last)->next = insertThis;
     }
 }
 
-Node createNode(int data){
+Node createNode(int data) {
     Node n = malloc(sizeof(*n));
     n->data = data;
     n->next = NULL;
     return n;
 }
 
-int length(Node last){
+int length(Node last) {
     int count = 0;
     Node current;
-    if(last){
-        for(current=last->next; current!=last; current=current->next){
+    if (last) {
+        for (current = last->next; current != last; current = current->next) {
             count++;
         }
         //最後一個會沒算到
@@ -38,7 +38,7 @@ int length(Node last){
     return count;
 }
 
-int main(){
+int main() {
     Node A = createNode(10);
     Node B = createNode(20);
     Node C = createNode(30);

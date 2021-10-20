@@ -1,45 +1,45 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct s{
+struct s {
     int val;
     struct s* next;
 };
 
 typedef struct s* stack;
 
-void push(stack* oldStack, int val){
-    //新增一個結構體，指向 原本的堆疊 內容為 val
+void push(stack* oldStack, int val) {
+    // 新增一個結構體，指向 原本的堆疊 內容為 val
     stack newElement = malloc(sizeof(*newElement));
     newElement->val = val;
     newElement->next = *oldStack;
 
-    //將 oldStack 的內容換成換成 newElement
-    //因為這一步的關係我們才需要用到 stack*
-    //因為函數無法直接更改區域變數的值，但可以透過指標
-    //如果oldStack是全域變數則另當別論
+    // 將 oldStack 的內容換成換成 newElement
+    // 因為這一步的關係我們才需要用到 stack*
+    // 因為函數無法直接更改區域變數的值，但可以透過指標
+    // 如果oldStack是全域變數則另當別論
 
     *oldStack = newElement;
 }
 
-int pop(stack* oldStack){
-    stack tmp;  //用來儲存即將被 free 掉的記憶體位置
-    int ret;    //用來儲存要被 pop出的值
-    tmp=*oldStack;
-    ret=(*oldStack)->val;
-    *oldStack=(*oldStack)->next;
+int pop(stack* oldStack) {
+    stack tmp;  // 用來儲存即將被 free 掉的記憶體位置
+    int ret;    // 用來儲存要被 pop出的值
+    tmp = *oldStack;
+    ret = (*oldStack)->val;
+    *oldStack = (*oldStack)->next;
     free(tmp);
     return ret;
 }
 
-//印出堆疊裡的值
-//不需要改變 s 的值所以參數只要 stack 不用 stack*
-void printStackLn(stack s){
+// 印出堆疊裡的值
+// 不需要改變 s 的值所以參數只要 stack 不用 stack*
+void printStackLn(stack s) {
     stack current;
-    //這個for迴圈可能不好懂，可以回去複習一下
-    //https://github.com/Hadname/data_structure_in_C/blob/master/%E9%9A%8E%E6%AE%B5%E5%BC%8F%E6%95%99%E5%AD%B8/README.md
-    for(current=s; current; current=current->next){
-        printf("%d ",current->val);
+    // 這個for迴圈可能不好懂，可以回去複習一下
+    // https://github.com/Hadname/data_structure_in_C/blob/master/%E9%9A%8E%E6%AE%B5%E5%BC%8F%E6%95%99%E5%AD%B8/README.md
+    for (current = s; current; current = current->next) {
+        printf("%d ", current->val);
     }
     printf("\n");
     /*
@@ -61,13 +61,13 @@ void printStackLn(stack s){
     */
 }
 
-int main(){
-    stack foo=NULL;
-    //為什麼要設為 NULL 呢？
-    //如果一開始沒有將 foo 指向 NULL
-    //則該鏈結串列的最後一個結構體的next會指向一個殘值
-    //此時 printStackLn() 內的for迴圈，會無法判斷何時要結束
-    //造成程式出錯
+int main() {
+    stack foo = NULL;
+    // 為什麼要設為 NULL 呢？
+    // 如果一開始沒有將 foo 指向 NULL
+    // 則該鏈結串列的最後一個結構體的next會指向一個殘值
+    // 此時 printStackLn() 內的for迴圈，會無法判斷何時要結束
+    // 造成程式出錯
 
     push(&foo, 10);
     printStackLn(foo);

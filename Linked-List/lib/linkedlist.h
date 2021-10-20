@@ -13,23 +13,23 @@
 typedef struct node* Node;
 typedef struct ll* LinkedList;
 
-struct node{
+struct node {
     void* data;
     struct node* next;
 };
 
-struct ll{
+struct ll {
     Node first;
     Node last;
     Node (*append)(struct ll*, void*);
 };
 
-Node linkedlistAppend(LinkedList this, void* data){
+Node linkedlistAppend(LinkedList this, void* data) {
     Node n = malloc(sizeof(*n));
-    n -> data = data;
-    n -> next = NULL;
+    n->data = data;
+    n->next = NULL;
     //如果為空串列
-    if(!this->first){
+    if (!this->first) {
         this->first = n;
         this->last = n;
         return n;
@@ -39,7 +39,7 @@ Node linkedlistAppend(LinkedList this, void* data){
     return n;
 }
 
-LinkedList __LinkedList__(){
+LinkedList __LinkedList__() {
     LinkedList list = malloc(sizeof(*list));
     list->first = NULL;
     list->last = NULL;

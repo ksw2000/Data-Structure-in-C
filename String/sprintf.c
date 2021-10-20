@@ -1,6 +1,6 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int main(){
+int main() {
     char str1[] = "hello ";
     char str2[] = "world";
     char result[16];
@@ -10,14 +10,14 @@ int main(){
     char str_ori[] = "Taiwan NO.1";
     char str_copy[16];
     sprintf(str_copy, "%s", str_ori);
-    printf("%s\n",str_copy);
+    printf("%s\n", str_copy);
 
     int a = 10;
     char b = 'A';
     float c = 9.487;
     char str[16];
-    sprintf(str,"%d %c %.3f", a, b, c);
-    printf("%s",str);
+    sprintf(str, "%d %c %.3f", a, b, c);
+    printf("%s", str);
 
     return 0;
 }

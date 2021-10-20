@@ -1,5 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
     本範例利用大量 C 語言技巧，僅供參考，初學者建議跳過
@@ -10,13 +10,13 @@
 typedef struct e* Element;
 typedef struct q* Queue;
 
-struct e{
+struct e {
     char* name;
     int length;
 };
 
 // 開頭變數 _ 表示 private
-struct q{
+struct q {
     int _cap;
     int _rear;
     int _len;
@@ -28,12 +28,12 @@ struct q{
     void (*print)(Queue);
 };
 
-void enqueue(Queue this, Element e){
-    if((this->_len + 1) == (this->_cap)){
+void enqueue(Queue this, Element e) {
+    if ((this->_len + 1) == (this->_cap)) {
         int newCap = this->_cap << 1;
         Element* newList = malloc(sizeof(*newList) * newCap);
         int i;
-        for(i=0; i<this->_len; i++){
+        for (i = 0; i < this->_len; i++) {
             newList[i] = this->list[(this->_rear + i) % this->_cap];
         }
         this->list = newList;
@@ -47,8 +47,8 @@ void enqueue(Queue this, Element e){
     this->_len++;
 }
 
-Element dequeue(Queue this){
-    if(this->isEmpty(this)){
+Element dequeue(Queue this) {
+    if (this->isEmpty(this)) {
         fprintf(stderr, "Queue is empty");
         exit(EXIT_FAILURE);
     }
@@ -58,21 +58,21 @@ Element dequeue(Queue this){
     return tmp;
 }
 
-int isEmpty(Queue this){
+int isEmpty(Queue this) {
     return this->_len == 0;
 }
 
-void queuePrint(Queue this){
+void queuePrint(Queue this) {
     int i;
     Element e;
-    for(i=0; i < this->_len; i++){
+    for (i = 0; i < this->_len; i++) {
         e = this->list[(this->_rear + i) % this->_cap];
         printf("%s (%d min %d s) -> ", e->name, e->length / 60, e->length % 60);
     }
     printf("NULL\n");
 }
 
-Queue __Queue__(){
+Queue __Queue__() {
     Queue this = malloc(sizeof(*this));
     this->_cap = 8;
     this->_len = 0;
@@ -86,14 +86,14 @@ Queue __Queue__(){
     return this;
 }
 
-Element createElement(char* name, int len){
+Element createElement(char* name, int len) {
     Element e = malloc(sizeof(*e));
     e->name = name;
     e->length = len;
     return e;
 }
 
-int main(){
+int main() {
     Queue q = __Queue__();
     Element song1 = createElement("如果我們不曾相遇", 229);
     Element song2 = createElement("盛夏光年", 349);

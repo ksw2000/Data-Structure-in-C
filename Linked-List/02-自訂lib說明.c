@@ -4,9 +4,9 @@
     本範例是為了提供以後範例能更簡單使用 Linked list 所編
 */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include"lib/linkedlist.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "lib/linkedlist.h"
 /*
     LinkedList
         Node* first: 指向串列開頭
@@ -19,7 +19,7 @@
 
     LinkedList __LinkedList__() 創建新的鍵結串列
 */
-int main(){
+int main() {
     // 宣告新的 LinkedList
     LinkedList l = __LinkedList__();
 
@@ -32,7 +32,7 @@ int main(){
 
     // 結構體 LinkedList 中 first 指向 BAT, last 指向 HAT
     Node current;
-    for(current = l->first; current; current=current->next){
+    for (current = l->first; current; current = current->next) {
         printf("%s -> ", (char*)(current->data));
     }
     printf("NULL");
