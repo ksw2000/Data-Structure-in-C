@@ -350,12 +350,39 @@ if(f){
 
 ## 9. 請務避理解記憶體的分配
 
-[https://blog.gtwang.org/programming/memory-layout-of-c-program/](https://blog.gtwang.org/programming/memory-layout-of-c-program/)
+<img src="https://blog.gtwang.org/wp-content/uploads/2017/03/memory-layout-of-c-program-diagram-20170301-1024x962.png" style="max-width:450px; width:100%;">
 
-除了 Heap 區可以 free 之外，很多都是不可以 free() 的哦！
+```c
+#include <stdio.h>
+const int global_x = 1;  // 儲存於 data 區段（唯讀區域）
+int global_y = 1;        // 儲存於 data 區段（可讀寫區域）
+int global_z;            // 儲存於 bss 區段
+int main() {
+  const static int x = 1; // 儲存於 data 區段（唯讀區域）
+  static int y = 1;       // 儲存於 data 區段（可讀寫區域）
+  static int z;           // 儲存於 bss 區段
+  int w = 1;              // 儲存於 stack 區段
 
-![](./迷因/老娘直接把你的bss區free掉.png)
+  // 儲存於 heap 區段
+  char* buf = malloc(sizeof(char) * 100);
+  // ...
+  free(buf);
 
+  return 0;
+}
+```
+
+**malloc() & free() 說明**
++ malloc() 底層是呼叫 system call 請 OS 實作
++ C 語言不會去記得 `buf` 所指向的記憶體有多大！但 OS 本身會
++ free() 底層也是呼叫 system call 請 OS 實作
++ 雖然 C 語言不記得 `buf` 原本指向有多大，但 OS 記得，所以當初宣告多大，free() 就清空多大的記憶體！
++ **在 C 語言中只有 Heap 區可以 free()**
+
+參考：[https://blog.gtwang.org/programming/memory-layout-of-c-program/](https://blog.gtwang.org/programming/memory-layout-of-c-program/)
+
+
+<img src="./迷因/老娘直接把你的bss區free掉.png" style="max-width:300px; width:100%;">
 
 ## 廣告 學員偶像社 熱情招生
 
