@@ -76,7 +76,7 @@ void main(){
 
 ```c
 // 不接受額外的參數
-int main(){
+int main(void){
 
     return 0;
 }
