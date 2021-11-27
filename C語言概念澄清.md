@@ -76,7 +76,7 @@ void main(){
 
 ```c
 // 不接受額外的參數
-int main(){
+int main(void){
 
     return 0;
 }
@@ -348,7 +348,7 @@ if(f){
 ## 8. 請務必熟悉字串的相關操作
 [字串操作大補帖](https://github.com/liao2000/Data-Structure-in-C/tree/master/String)
 
-## 9. 請務避理解記憶體的分配
+## 9. 請務必理解記憶體的分配
 
 <img src="https://blog.gtwang.org/wp-content/uploads/2017/03/memory-layout-of-c-program-diagram-20170301-1024x962.png" style="max-width:450px; width:100%;">
 
