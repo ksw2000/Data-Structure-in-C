@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include "lib/linkedlist.h"
 
-LinkedList invert(LinkedList l) {
+LinkedList* invert(LinkedList* l) {
     /*
         比較好懂的作法
 
-        Node newList, current, next;
+        Node* newList;
+        Node* current;
+        Node* next;
         newList = NULL;
         for(current = l->first; current; current=next){
             // 暫時存著下一個 current 的位址
@@ -18,7 +20,7 @@ LinkedList invert(LinkedList l) {
             newList = current;
         }
 
-        LinkedList m = __LinkedList__();
+        LinkedList* m = __LinkedList__();
         m->first = newList;
         m->last = l->first;
 
@@ -26,8 +28,9 @@ LinkedList invert(LinkedList l) {
     */
 
     // 課本作法
-    Node trail, middle;
-    Node lead = l->first;
+    Node* trail;
+    Node* middle;
+    Node* lead = l->first;
     middle = NULL;
     while (lead) {
         trail = middle;
@@ -36,8 +39,7 @@ LinkedList invert(LinkedList l) {
         middle->next = trail;
     }
 
-    // 因為我用的是 OOP 所以又多的幾步 (記錄新串列開頭而已也沒什麼)
-    LinkedList m = __LinkedList__();
+    LinkedList* m = __LinkedList__();
     m->first = middle;
     m->last = l->first;
 
@@ -50,14 +52,13 @@ LinkedList invert(LinkedList l) {
         lead:   走訪原本的 linked list
 
         while(lead){
-            trail = middle;         // [STEP2] trail 暫存 middle
-       (保持在新串列的最前端) middle = lead;          // [STEP3] middle 暫存
-       lead lead = lead->next;      // [STEP4] lead 走訪舊串列 middle->next =
-       trail    // [STEP1] 將走訪到的舊串列節點加回新串列 (從前方加入(stack
-       push))
+            trail = middle;         // trail 暫存 middle
+            middle = lead;          // middle 暫存 lead
+            lead = lead->next;      // 每次迭代時 lead 走訪原串列的下個節點
+            middle->next = trail    // 將走訪到的原串列節點加回新串列
         }
 
-        課本上的作法實在過於精簡，只有神人才看得懂吧
+        課本上的作法非常精簡
         Fundamentals of Data Structure in C p.171 Program 4.16
 
         自己實作上建議可以將想法想成
@@ -67,27 +68,30 @@ LinkedList invert(LinkedList l) {
     */
 }
 
+void printList(LinkedList* l) {
+    Node* current;
+    for (current = l->first; current; current = current->next) {
+        printf("%s -> ", (char*)(current->data));
+    }
+    printf("NULL\n");
+}
+
 int main() {
-    LinkedList l = __LinkedList__();
+    LinkedList* l = __LinkedList__();
     l->append(l, "BAT");
     l->append(l, "CAT");
     l->append(l, "EAT");
     l->append(l, "FAT");
     l->append(l, "HAT");
 
-    printf("l: \t");
-    Node current;
-    for (current = l->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printf("original: \t");
+    printList(l);
+    // OUTPUT: BAT -> CAT -> EAT -> FAT -> HAT -> NULL
 
-    LinkedList m = invert(l);
+    LinkedList* m = invert(l);
+    printf("inverted: \t");
+    printList(m);
+    // OUTPUT: HAT -> FAT -> EAT -> CAT -> BAT -> NULL
 
-    printf("m: \t");
-    for (current = m->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
     return 0;
 }

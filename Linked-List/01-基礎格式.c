@@ -42,5 +42,6 @@ int main() {
     append(&first, &trail, "HAT");
     linkedListPrintLn(first);
 
+    // OUTPUT: BAT -> CAT -> EAT -> FAT -> HAT -> NULL
     return 0;
 }

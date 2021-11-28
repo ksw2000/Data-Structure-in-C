@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include "lib/linkedlist.h"
 
-void insert(LinkedList l, Node insertAfterHere, char* insertThis) {
+void insert(LinkedList* l, Node* insertAfterHere, char* insertThis) {
     // 檢查該佇列是否為空
     // 該佇列不為空
     if (l->first) {
-        Node newNode = malloc(sizeof(*newNode));
+        Node* newNode = malloc(sizeof(Node));
         newNode->data = (void*)insertThis;
         newNode->next = insertAfterHere->next;
         insertAfterHere->next = newNode;
@@ -18,39 +18,37 @@ void insert(LinkedList l, Node insertAfterHere, char* insertThis) {
     }
 }
 
+void printList(LinkedList* l) {
+    Node* current;
+    for (current = l->first; current; current = current->next) {
+        printf("%s -> ", (char*)(current->data));
+    }
+    printf("NULL\n");
+}
+
 int main() {
-    LinkedList l = __LinkedList__();
+    LinkedList* l = __LinkedList__();
 
-    Node BAT = l->append(l, "BAT");
-    Node CAT = l->append(l, "CAT");
-    Node EAT = l->append(l, "EAT");
-    Node FAT = l->append(l, "FAT");
-    Node HAT = l->append(l, "HAT");
+    Node* BAT = l->append(l, "BAT");
+    Node* CAT = l->append(l, "CAT");
+    Node* EAT = l->append(l, "EAT");
+    Node* FAT = l->append(l, "FAT");
+    Node* HAT = l->append(l, "HAT");
 
-    // 原先的串列
-    Node current;
-    for (current = l->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n\n");
+    // (1) 原先的串列
+    printList(l);
+    // OUTPUT: BAT -> CAT -> EAT -> FAT -> HAT -> NULL
 
-    // 在該串列的 CAT 與 EAT 中插入 DAT
+    // (2) 在該串列的 CAT 與 EAT 中插入 DAT
     insert(l, CAT, "DAT");
+    printList(l);
+    // OUTPUT: BAT -> CAT -> DAT -> EAT -> FAT -> HAT -> NULL
 
-    for (current = l->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n\n");
-
-    // 新建空串列
-    // 空串列使用 insert 的效果
-    LinkedList m = __LinkedList__();
+    // (3) 新建空串列，空串列使用 insert 的效果
+    LinkedList* m = __LinkedList__();
     insert(m, NULL, "DAT");
-
-    for (current = m->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL");
+    printList(m);
+    // OUTPUT: DAT -> NULL
 
     return 0;
 }

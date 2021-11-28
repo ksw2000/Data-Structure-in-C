@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "lib/linkedlist.h"
 
-LinkedList concatenate(LinkedList dest, LinkedList src) {
+LinkedList* concatenate(LinkedList* dest, LinkedList* src) {
     // 當 dest 串列不為空時直接將來源其結尾 next 指向 src 串列的頭
     if (dest->first) {
         dest->last->next = src->first;
@@ -15,52 +15,50 @@ LinkedList concatenate(LinkedList dest, LinkedList src) {
     return dest;
 }
 
+void printList(LinkedList* l) {
+    Node* current;
+    for (current = l->first; current; current = current->next) {
+        printf("%s -> ", (char*)(current->data));
+    }
+    printf("NULL\n");
+}
+
+
 int main() {
-    LinkedList l = __LinkedList__();
+    LinkedList* l = __LinkedList__();
     l->append(l, "BAT");
     l->append(l, "CAT");
     l->append(l, "EAT");
     l->append(l, "FAT");
 
     printf("l: \t");
-    Node current;
-    for (current = l->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printList(l);
+    // OUTPUT: BAT -> CAT -> EAT -> FAT -> NULL
 
-    LinkedList m = __LinkedList__();
+    LinkedList* m = __LinkedList__();
     m->append(m, "HAT");
     m->append(m, "JAT");
     m->append(m, "LAT");
     m->append(m, "MAT");
-
+    
     printf("m: \t");
-    for (current = m->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printList(m);
+    // OUTPUT: HAT -> JAT -> LAT -> MAT -> NULL
 
     printf("l + m: \t");
     l = concatenate(l, m);
-    for (current = l->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printList(l);
+    // OUTPUT: BAT -> CAT -> EAT -> FAT -> HAT -> JAT -> LAT -> MAT -> NULL
 
-    LinkedList s = __LinkedList__();
+    LinkedList* s = __LinkedList__();
     printf("s: \t");
-    for (current = s->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printList(s);
+    // OUTPUT: NULL
 
     printf("s + m: \t");
     s = concatenate(s, m);
-    for (current = s->first; current; current = current->next) {
-        printf("%s -> ", (char*)(current->data));
-    }
-    printf("NULL\n");
+    printList(s);
+    // OUTPUT: HAT -> JAT -> LAT -> MAT -> NULL
 
     return 0;
 }
