@@ -12,7 +12,7 @@ typedef struct treeNode {
     int height;
 } TreeNode;
 
-// user should declare their own comapre function
+// implement your own comapre function
 // return 1 if el1 is less than el2
 typedef int (*Less_func)(void* el1, void* el2);
 
@@ -114,7 +114,7 @@ void avlTree_insert(AVLTree* this, void* element) {
         // push root node
         this->stack[++this->stack_top] = &(this->root);
         for (current = this->root; current;) {
-            // store path
+            // use a stack which is implemented by arrary list for saving path
             this->stack_top++;
             if (this->stack_top == this->stack_len) {
                 TreeNode*** newList =
@@ -142,7 +142,7 @@ void avlTree_insert(AVLTree* this, void* element) {
         TreeNode** visit;
 
         // insert into node
-        if(this->stack_top !=-1){
+        if (this->stack_top != -1) {
             visit = this->stack[this->stack_top--];
             if (*visit && this->less(element, (*visit)->element)) {
                 (*visit)->left = node;
@@ -213,9 +213,11 @@ void inorder(TreeNode* root) {
 
 int main() {
     // Prepare data
-    struct person list[] = {{"Honoka", 157}, {"Umi", 159},  {"Kotori", 159},
-                            {"Eli", 162},    {"Nico", 154}, {"Nozomi", 159},
-                            {"Hanayo", 156}, {"Rin", 155},  {"Maki", 161}};
+    struct person list[] = {
+        {"Rina", 149},   {"Hanamaru", 152}, {"Nico", 154},   {"Chisato", 155},
+        {"Hanayo", 156}, {"Honoka", 157},   {"Kanata", 158}, {"Kotori", 159},
+        {"Riko", 160},   {"Maki", 161},     {"Eli", 162},    {"Mari", 163},
+        {"Karin", 167}};
     int list_len = sizeof(list) / sizeof(list[0]);
 
     // Create binary tree
