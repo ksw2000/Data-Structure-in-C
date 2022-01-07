@@ -13,13 +13,13 @@ enum boolean { false = 0, true = 1 };
 typedef enum boolean bool;
 
 // 可以簡寫成
-// enum bool{fasle, true};
+// enum bool{false, true};
 // 在不指定數字的情況下就是由 0 開始編號
 
 enum operand { add, minus, times, divide };
 typedef enum operand op;
 
-//利用enum自定義的型態，也可以用來當函數的回傳型態
+// 利用enum自定義的型態，也可以用來當函數的回傳型態
 bool isEqual(int a, int b) {
     if (a == b) {
         return true;
