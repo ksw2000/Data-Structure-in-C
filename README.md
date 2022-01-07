@@ -26,7 +26,7 @@
 + [Enum](./Enum)
     + [enum.c](./Enum/enum.c)
 + [Array](./Array)
-    + [01-動態宣告二維陣列.c](./01-動態宣告二維陣列.c)
+    + [01-動態宣告二維陣列.c](./Array/01-動態宣告二維陣列.c)
 + Sparse Matrix
 + [Stack](./Stack)
     + [01-陣列實作堆疊-基礎.c](./Stack/01-陣列實作堆疊-基礎.c)
