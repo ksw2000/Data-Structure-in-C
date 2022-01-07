@@ -245,8 +245,8 @@ int main() {
         printf("---------------------\n");
     }
 
-    // see the tree
-    // inorder(tree->root);
+    // See the tree
+    inorder(tree->root);
 
     return 0;
 }
