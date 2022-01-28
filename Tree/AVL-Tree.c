@@ -85,7 +85,7 @@ void treeNode_reBalance(TreeNode** this) {
             treeNode_rightRotation(this);
         } else {
             // LR Type
-            treeNode_leftRotation(&(node->left));
+            treeNode_leftRotation(&node->left);
             treeNode_rightRotation(this);
         }
     } else if (bf < -1) {
@@ -94,7 +94,7 @@ void treeNode_reBalance(TreeNode** this) {
             treeNode_leftRotation(this);
         } else {
             // RL Type
-            treeNode_rightRotation(&(node->right));
+            treeNode_rightRotation(&node->right);
             treeNode_leftRotation(this);
         }
     }
@@ -112,7 +112,7 @@ void avlTree_insert(AVLTree* this, void* element) {
         TreeNode* current = NULL;
 
         // push root node
-        this->stack[++this->stack_top] = &(this->root);
+        this->stack[++this->stack_top] = &this->root;
         for (current = this->root; current;) {
             // use a stack which is implemented by arrary list for saving path
             this->stack_top++;
@@ -127,10 +127,10 @@ void avlTree_insert(AVLTree* this, void* element) {
 
             // find path and push node to stack
             if (this->less(element, current->element)) {
-                this->stack[this->stack_top] = &(current->left);
+                this->stack[this->stack_top] = &current->left;
                 current = current->left;
             } else {
-                this->stack[this->stack_top] = &(current->right);
+                this->stack[this->stack_top] = &current->right;
                 current = current->right;
             }
         }
