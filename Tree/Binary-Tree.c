@@ -25,85 +25,79 @@ typedef struct binaryTree {
 } BinaryTree;
 
 void binaryTree_add(BinaryTree* this, void* element) {
-    BinaryTreeNode* node = malloc(sizeof(BinaryTreeNode));
+    // create new node
+    BinaryTreeNode* node = calloc(1, sizeof(BinaryTreeNode));
     node->element = element;
-    node->left = NULL;
-    node->right = NULL;
 
-    // `this` has root
-    if (this->root) {
-        BinaryTreeNode* previous = NULL;
-        BinaryTreeNode* current = NULL;
-        for (current = this->root; current;) {
-            // if new node is smaller than current node
-            previous = current;
-            if (this->cmp(element, current->element) < 0) {
-                current = current->left;
-            } else {
-                current = current->right;
-            }
-        }
-        // if new node is smaller than its parent node
-        if (previous && this->cmp(element, previous->element) < 0) {
-            previous->left = node;
-        } else {
-            previous->right = node;
-        }
-    } else {
-        // `this` does not have root
-        this->root = node;
+    // `parent` is the pointer of the `left` or `right`
+    // in the parent node of the new node
+    // i.e. the pointer of the pointer that points to `current`
+    //
+    // for example
+    //          parent
+    //        /        \
+    //      left      right
+    //      /
+    // new node (NULL)
+    //
+    // current = node (NULL before added)
+    // parent = &left
+    // *parent = current
+
+    BinaryTreeNode** parent = &this->root;
+    BinaryTreeNode* current = this->root;
+
+    while(current){
+        // if new node is smaller than current node
+        // set `parent` to the pointer of the left of current
+        parent = (this->cmp(element, current->element) < 0) ? &current->left
+                                                            : &current->right;
+        current = *parent;
     }
+
+    *parent = node;
 }
 
 void binaryTree_delete(BinaryTree* this, void* target) {
-    // find the node and its parent need to be deleted
-    // and its parent
-    BinaryTreeNode* current = NULL;
-    BinaryTreeNode* parent = NULL;
-    for (current = this->root;
-         current && this->cmp(target, current->element);) {
-        parent = current;
-        current = this->cmp(target, current->element) < 0 ? current->left
-                                                          : current->right;
+    // find the node should be deleted and
+    // the pointer of the pointer points to it
+
+    BinaryTreeNode** parent = &this->root;
+    BinaryTreeNode* current = this->root;
+
+    while (current && this->cmp(target, current->element)) {
+        parent = this->cmp(target, current->element) < 0 ? &current->left
+                                                         : &current->right;
+        current = *parent;
     }
 
+    // if not found
     if (!current) {
         fprintf(stderr, "binaryTree_delete() target node is not in tree\n");
         exit(EXIT_FAILURE);
     }
 
-    if (current->right) {
+    if (!current->right || !current->left) {
+        *parent = (current->left) ? current->left : current->right;
+        free(current);
+    } else {
         // find successor: the smallest value in right subtree
-        BinaryTreeNode* successor;
-        BinaryTreeNode* successor_parent = current;
-        for (successor = current->right; successor->left;) {
-            successor_parent = successor;
-            successor = successor->left;
+        // successor_parent is the pointer of the pointer that points to
+        // `successor`
+
+        BinaryTreeNode** successor_parent = &current->right;
+        BinaryTreeNode* successor = current->right;
+        for (; successor->left; successor = *successor_parent) {
+            successor_parent = &successor->left;
         }
 
         // replace current node to successor node
         current->element = successor->element;
+        // connect the successor's parent to the successor's right subtree
+        *successor_parent = successor->right;
+
         free(successor);
-
-        // let the pointer point to the successor be NULL;
-        if (successor_parent->left == successor) {
-            successor_parent->left = successor->right;
-        } else {
-            successor_parent->right = successor->right;
-        }
-        return;
     }
-
-    if (!parent) {
-        this->root = current->left;
-    } else if (parent->left == current) {
-        parent->left = current->left;
-    } else if (parent->right == current) {
-        parent->right = current->left;
-    }
-
-    free(current);
-    return;
 }
 
 // build an empty binary tree
@@ -144,9 +138,12 @@ void inorder(BinaryTreeNode* root) {
 
 int main() {
     // Prepare data
-    struct person list[] = {{"Honoka", 157}, {"Umi", 159},  {"Kotori", 159},
-                            {"Eli", 162},    {"Nico", 154}, {"Nozomi", 159},
-                            {"Hanayo", 156}, {"Rin", 155},  {"Maki", 161}};
+    struct person list[] = {
+        {"Hanamaru", 152}, {"Rina", 149},   {"Nico", 154},    {"Hanayo", 156},
+        {"Kanata", 158},   {"Maki", 161},   {"Chisato", 155}, {"Karin", 167},
+        {"Kotori", 159},   {"Honoka", 157}, {"Riko", 160},    {"Eli", 162},
+        {"Mari", 163},
+    };
     int list_len = sizeof(list) / sizeof(list[0]);
 
     // Create binary tree
@@ -160,14 +157,12 @@ int main() {
 
     // See the tree
     inorder(tree->root);
-    printf("Null\n");
-
-    printf("\n\n");
+    printf("Null\n\n");
 
     // Delete
     for (i = 0; i < list_len; i++) {
         printf("delete %s\n", list[i].name);
-        tree->delete (tree, list+i);
+        tree->delete (tree, list + i);
         inorder(tree->root);
         printf("Null\n");
     }
