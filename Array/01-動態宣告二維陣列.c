@@ -1,40 +1,50 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// 如何動態地宣告二維陣列？
-// 此程式將示範動態宣告一個 9 * 5 的二維陣列
+// How to simply allocate 2D array on runtime (in heap)?
+
+int** allocate2D(int rows, int cols){
+    // allocate memory for rows
+    int** array2D = array2D = malloc(sizeof(int*) * rows);
+
+    // allocate cols for each element in array2D
+    int i;
+    for (i = 0; i < rows; i++) {
+        array2D[i] = malloc(sizeof(int) * cols);
+    }
+    return array2D;
+}
+
+void free2D(int** array2D, int rows){
+    int i;
+    for(i=0; i<rows; i++){
+        free(array2D[i]);
+    }
+    free(array2D);
+}
 
 int main() {
-    // STEP1: 宣告 int** 變數
-    int** Array2D;
+    int rows = 9; 
+    int cols = 5;
+    int** array2D = allocate2D(rows, cols);
 
-    // STEP2: 將 int** 指向 9 個 int*
-    Array2D = malloc(sizeof(int*) * 9);
-
-    // STEP3: 將每個 int* 再指向 5 個 int
-    int i;
-    for (i = 0; i < 9; i++) {
-        Array2D[i] = malloc(sizeof(int) * 5);
-    }
-
-    // 完成
-
-    // 測試：將每個 element 編號印出
-    int j, count = 0;
-    for (i = 0; i < 9; i++) {
-        for (j = 0; j < 5; j++) {
-            Array2D[i][j] = count;
+    // TEST
+    int i, j, count = 0;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            array2D[i][j] = count;
             count++;
         }
     }
 
-    // 將每個 element 輸出
-    for (i = 0; i < 9; i++) {
-        for (j = 0; j < 5; j++) {
-            printf("%2d ", Array2D[i][j]);
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("%2d ", array2D[i][j]);
         }
         printf("\n");
     }
+
+    free2D(array2D, rows);
 
     return 0;
 }
