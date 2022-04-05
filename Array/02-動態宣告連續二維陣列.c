@@ -2,16 +2,15 @@
 #include <stdlib.h>
 
 // Write a function called malloc2D() which allocates a 2d array.
-// Minimize the number of calls to malloc() and make sure te memory is accessible
-// by the notation array[i][j]
-// Try allocate this as a contiguous block of memory, that space can be released
-// by a single free() call.
+// Minimize the number of calls to malloc() and make sure te memory is
+// accessible by the notation array[i][j] Try allocate this as a contiguous
+// block of memory, that space can be released by a single free() call.
 
 int** allocate2D(int rows, int cols) {
     size_t overhead = sizeof(int*) * rows;
     void** array = malloc(overhead + sizeof(int) * rows * cols);
-    int i = 0;
-    for (; i < rows; i++) {
+    int i;
+    for (i = 0; i < rows; i++) {
         array[i] = array + overhead + i * cols;
     }
     return (int**)array;

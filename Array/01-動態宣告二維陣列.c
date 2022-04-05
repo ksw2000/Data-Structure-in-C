@@ -3,7 +3,7 @@
 
 // How to simply allocate 2D array on runtime (in heap)?
 
-int** allocate2D(int rows, int cols){
+int** allocate2D(int rows, int cols) {
     // allocate memory for rows
     int** array2D = array2D = malloc(sizeof(int*) * rows);
 
@@ -15,16 +15,16 @@ int** allocate2D(int rows, int cols){
     return array2D;
 }
 
-void free2D(int** array2D, int rows){
+void free2D(int** array2D, int rows) {
     int i;
-    for(i=0; i<rows; i++){
+    for (i = 0; i < rows; i++) {
         free(array2D[i]);
     }
     free(array2D);
 }
 
 int main() {
-    int rows = 9; 
+    int rows = 9;
     int cols = 5;
     int** array2D = allocate2D(rows, cols);
 
