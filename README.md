@@ -9,11 +9,11 @@
     + [04-陣列變數之名稱即陣列的位置.c](./Pointer/04-陣列變數之名稱即陣列的位置.c)
 + [String](./String)
     + [README.md](./String/README.md) `介紹字串控制相關函數`
-    + [sprintf.c](./String/sprintf.c)
-    + [strlen.c](./String/strlen.c)
-    + [strcmp.c](./String/strcmp.c)
-    + [strcat.c](./String/strcat.c)
-    + [strcpy.c](./String/strcpy.c)
+    + [sprintf.c](./String/sprintf.c) `將printf結果存進字串`
+    + [strlen.c](./String/strlen.c) `取得字串長度`
+    + [strcmp.c](./String/strcmp.c) `字串值是否相同`
+    + [strcat.c](./String/strcat.c) `連接兩字串`
+    + [strcpy.c](./String/strcpy.c) `複製字串`
 + [Struct](./Struct)
     + [01-基礎格式.c](./Struct/01-基礎格式.c)
     + [02-在結構體後直接宣告變數.c](./Struct/02-在結構體後直接宣告變數.c)
@@ -55,6 +55,7 @@
     + [Binary-Tree.c](./Tree/Binary-Tree.c)
     + [Red-Black-Tree.c](./Tree/Red-Black-Tree.c)
 + Heap
+    + [01-simple-max-heap.c](./Heap/01-simple-max-heap.c)
 + Graph
 + [C語言概念澄清.md](./C語言概念澄清.md)
 + 資料結構上機考參考答案
