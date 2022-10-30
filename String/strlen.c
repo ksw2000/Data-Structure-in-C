@@ -6,8 +6,7 @@ int main() {
     // 3
 
     printf("%d ", strlen("中文"));
-    // 6 (UTF8 if you use VScode or Atom)
-    // 4 (Big5 if you use Dev-C++)
+    // 6 (UTF8) or 4 (Big5)
 
     return 0;
 }
