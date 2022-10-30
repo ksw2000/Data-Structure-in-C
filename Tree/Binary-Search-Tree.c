@@ -1,15 +1,15 @@
-// This is an example for Binary Tree
+// This is an example for Binary Search Tree
 // 2021/10/20
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct binaryTreeNode {
+typedef struct bstNode {
     void* element;
-    struct binaryTreeNode* left;
-    struct binaryTreeNode* right;
-} BinaryTreeNode;
+    struct bstNode* left;
+    struct bstNode* right;
+} BstNode;
 
 // user should declare their own comapre function
 // return negative if el1 is less than el2
@@ -18,7 +18,7 @@ typedef struct binaryTreeNode {
 typedef int (*Compare_func)(void* el1, void* el2);
 
 typedef struct binaryTree {
-    BinaryTreeNode* root;
+    BstNode* root;
     Compare_func cmp;
     void (*add)(struct binaryTree* this, void* element);
     void (*delete)(struct binaryTree* this, void* target);
@@ -26,7 +26,7 @@ typedef struct binaryTree {
 
 void binaryTree_add(BinaryTree* this, void* element) {
     // create new node
-    BinaryTreeNode* node = calloc(1, sizeof(BinaryTreeNode));
+    BstNode* node = calloc(1, sizeof(BstNode));
     node->element = element;
 
     // `parent` is the pointer of the `left` or `right`
@@ -44,8 +44,8 @@ void binaryTree_add(BinaryTree* this, void* element) {
     // parent = &left
     // *parent = current
 
-    BinaryTreeNode** parent = &this->root;
-    BinaryTreeNode* current = this->root;
+    BstNode** parent = &this->root;
+    BstNode* current = this->root;
 
     while(current){
         // if new node is smaller than current node
@@ -62,8 +62,8 @@ void binaryTree_delete(BinaryTree* this, void* target) {
     // find the node should be deleted and
     // the pointer of the pointer points to it
 
-    BinaryTreeNode** parent = &this->root;
-    BinaryTreeNode* current = this->root;
+    BstNode** parent = &this->root;
+    BstNode* current = this->root;
 
     while (current && this->cmp(target, current->element)) {
         parent = this->cmp(target, current->element) < 0 ? &current->left
@@ -85,8 +85,8 @@ void binaryTree_delete(BinaryTree* this, void* target) {
         // successor_parent is the pointer of the pointer that points to
         // `successor`
 
-        BinaryTreeNode** successor_parent = &current->right;
-        BinaryTreeNode* successor = current->right;
+        BstNode** successor_parent = &current->right;
+        BstNode* successor = current->right;
         for (; successor->left; successor = *successor_parent) {
             successor_parent = &successor->left;
         }
@@ -127,7 +127,7 @@ int personCmpFunc(void* p1, void* p2) {
     return 1;
 }
 
-void inorder(BinaryTreeNode* root) {
+void inorder(BstNode* root) {
     if (root) {
         inorder(root->left);
         struct person* element = (struct person*)(root->element);
