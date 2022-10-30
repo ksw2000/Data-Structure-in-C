@@ -284,8 +284,14 @@ struct person {
     int tall;
 };
 
-int personCmpFunc(void* el1, void* el2) {
-    return (((struct person*)el1)->tall - ((struct person*)el2)->tall);
+int personCmpFunc(void* p1, void* p2) {
+    if (((struct person*)p1)->tall < ((struct person*)p2)->tall)
+        return -1;
+    if (((struct person*)p1)->tall > ((struct person*)p2)->tall)
+        return 1;
+    if (!strcmp(((struct person*)p1)->name, ((struct person*)p2)->name))
+        return 0;
+    return 1;
 }
 
 void print_detail(TreeNode* root) {
