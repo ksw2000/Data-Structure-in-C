@@ -1,5 +1,7 @@
 # Data Structure in C
 
+![](./meme/data-structure-in-c-sakura-tomoyo.png)
+
 ### Catalog
 
 + [Pointer](./Pointer)
@@ -57,17 +59,9 @@
 + Heap
     + [01-simple-max-heap.c](./Heap/01-simple-max-heap.c)
 + Graph
++ Sorting
+    + [bubble-sort.c](./Sorting/bubble-sort.c)
+    + [insertion-sort.c](./Sorting/insertion-sort.c)
+    + [selection-sort.c](./Sorting/selection-sort.c)
+    + [README.md](./Sorting/README.md)
 + [C語言概念澄清.md](./C語言概念澄清.md)
-+ 資料結構上機考參考答案
-
----
-
-### 希望有志之士一同來編寫
-
-<img title="" src="./迷因/%E5%81%8F%E9%A0%AD%E7%97%9B%E3%80%81%E8%A1%80%E5%A3%93%E9%81%8E%E9%AB%98.jpg" alt="寫資料結構作業" style="max-width:350px; width:100%;" data-align="center">
-
-<img title="" src="./迷因/%E6%98%8E%E5%B9%B4%E5%86%8D%E6%93%B1%E4%BE%86.png" alt="明年再擱來" style="max-width:350px; width:100%;" data-align="center">
-
-<img title="" src="./迷因/%E9%A0%AD%E7%97%9B%E3%80%81%E8%83%83%E7%97%9B.png" alt="寫資料結構作業(2)" style="max-width:350px; width:100%;" data-align="center">
-
-<img title="" src="./迷因/%E5%8C%96%E5%AD%B8%E8%88%87%E8%B3%87%E5%B7%A5.jpg" alt="化學與資工" style="max-width:350px; width:100%;" data-align="center">

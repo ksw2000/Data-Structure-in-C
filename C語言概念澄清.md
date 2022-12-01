@@ -387,4 +387,4 @@ int main() {
 參考：[https://blog.gtwang.org/programming/memory-layout-of-c-program/](https://blog.gtwang.org/programming/memory-layout-of-c-program/)
 
 
-<img src="./迷因/老娘直接把你的bss區free掉.png" style="max-width:300px; width:100%;">
+![老娘直接把你的bss區free掉](./meme/老娘直接把你的bss區free掉.png)
