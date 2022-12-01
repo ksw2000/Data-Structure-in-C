@@ -63,5 +63,7 @@
     + [bubble-sort.c](./Sorting/bubble-sort.c)
     + [insertion-sort.c](./Sorting/insertion-sort.c)
     + [selection-sort.c](./Sorting/selection-sort.c)
+    + [merge-sort.c](./Sorting/merge-sort.c)
+    + [quick-sort.c](./Sorting/quick-sort.c)
     + [README.md](./Sorting/README.md)
 + [C語言概念澄清.md](./C語言概念澄清.md)
